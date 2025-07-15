@@ -1,0 +1,289 @@
+/* Importação de fonte do Google Fonts para um visual mais moderno */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+/* Variáveis CSS para cores e propriedades comuns */
+:root {
+    --primary-color: #28a745; /* Verde vibrante */
+    --secondary-color: #0056b3; /* Azul para detalhes e cabeçalhos */
+    --dark-color: #343a40; /* Cinza escuro para textos */
+    --light-color: #f8f9fa; /* Cinza claro para fundos de seção */
+    --white-color: #ffffff;
+    --border-radius: 5px;
+}
+
+/* Reset Básico de CSS para garantir consistência entre navegadores */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Essencial: padding e border incluídos na largura/altura */
+}
+
+/* Estilos Globais do Corpo da Página */
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6; /* Espaçamento entre linhas para melhor legibilidade */
+    color: var(--dark-color);
+    background-color: var(--light-color);
+}
+
+/* Classe de contêiner para centralizar conteúdo e limitar largura */
+.container {
+    max-width: 1100px;
+    margin: auto; /* Centraliza o contêiner na página */
+    padding: 0 20px; /* Padding nas laterais para evitar que o conteúdo cole nas bordas da tela */
+    overflow: hidden; /* Limpa floats, se houver, mas cuidado para não cortar conteúdo */
+}
+
+/* Estilos do Cabeçalho (Header) */
+header {
+    background: var(--dark-color);
+    color: var(--white-color);
+    padding: 1rem 0; /* Padding superior e inferior */
+    text-align: center;
+}
+
+header h1 {
+    margin-bottom: 0.5rem;
+    font-size: 2.2rem; /* Tamanho do título principal do cabeçalho */
+}
+
+header nav ul {
+    list-style: none; /* Remove marcadores de lista */
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline; /* Coloca os itens da navegação em linha */
+    margin: 0 15px; /* Espaçamento entre os itens */
+}
+
+header nav ul li a {
+    color: var(--white-color);
+    text-decoration: none; /* Remove sublinhado dos links */
+    font-weight: bold;
+    transition: color 0.3s ease; /* Transição suave de cor ao passar o mouse */
+}
+
+header nav ul li a:hover {
+    color: var(--primary-color); /* Muda a cor ao passar o mouse */
+}
+
+/* === Seção Hero (Banner Principal) === */
+#hero {
+    position: relative; /* CRÍTICO: Define o contexto de posicionamento para filhos absolutos */
+    color: var(--white-color); /* Cor do texto padrão para esta seção */
+    text-align: center;
+    /* overflow: hidden; */ /* REMOVIDO PARA DEBUG: Evita cortar o conteúdo se ele vazar. Pode ser reintroduzido se necessário após correção. */
+    min-height: 450px; /* GARANTE ALTURA MÍNIMA para o banner, acomodando a imagem */
+    display: flex; /* Transforma a seção em um container flexbox */
+    justify-content: center; /* Centraliza os itens filhos (incluindo o hero-content) horizontalmente */
+    align-items: center; /* Centraliza os itens filhos verticalmente */
+    padding-top: 20px; /* ADICIONADO: Espaçamento superior interno para afastar do header */
+    padding-bottom: 20px; /* ADICIONADO: Espaçamento inferior interno */
+}
+
+.hero-image {
+    position: absolute; /* POSICIONAMENTO ABSOLUTO: A imagem se posiciona em relação ao #hero */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Faz a imagem ocupar 100% da largura e altura do #hero */
+    object-fit: cover; /* Garante que a imagem cubra a área sem distorcer */
+    filter: brightness(60%); /* Escurece a imagem para melhor contraste do texto */
+    z-index: 1; /* CAMADA: Coloca a imagem em uma camada inferior */
+}
+
+.hero-content {
+    position: absolute; /* Posiciona o conteúdo de forma absoluta em relação ao pai (#hero) */
+    top: 50%; /* 50% do topo do pai */
+    left: 50%; /* 50% da esquerda do pai */
+    transform: translate(-50%, -50%); /* CENTRALIZA O ELEMENTO: Move ele de volta 50% da sua própria largura/altura */
+    width: 80%; /* Ocupa 80% da largura do pai */
+    max-width: 800px; /* Limita a largura máxima para telas grandes */
+    background: rgba(0, 0, 0, 0.7); /* Fundo semi-transparente para o texto (opacidade ajustada para 0.7) */
+    padding: 30px; /* Preenchimento interno para o conteúdo */
+    border-radius: var(--border-radius);
+    
+    display: flex; /* Flexbox para organizar o conteúdo interno */
+    flex-direction: column; /* Empilha os itens (h2, p, a) verticalmente */
+    justify-content: center; /* Centraliza os itens verticalmente */
+    align-items: center; /* Centraliza os itens horizontalmente */
+    text-align: center; /* Garante que o texto dentro seja centralizado */
+    
+    z-index: 2; /* CAMADA: Garante que o conteúdo fique acima da imagem */
+
+    /* PROPRIEDADES PARA GARANTIR A QUEBRA DE LINHA E EVITAR CORTE */
+    white-space: normal; /* Permite que o texto quebre linhas normalmente */
+    word-wrap: break-word; /* Força a quebra de palavras muito longas que não cabem */
+    overflow-wrap: break-word; /* Alternativa moderna para word-wrap */
+}
+
+/* Ajustes específicos para o texto dentro do hero-content */
+#hero h2 {
+    font-size: 2.2rem; /* Tamanho do título dentro do hero-content (ligeiramente ajustado) */
+    margin-bottom: 1rem;
+    line-height: 1.2; /* Espaçamento entre linhas para o título */
+    color: var(--white-color); /* Garante que o H2 seja branco */
+}
+
+#hero p {
+    font-size: 1.1rem; /* Tamanho do parágrafo dentro do hero-content (ligeiramente ajustado) */
+    margin-bottom: 1.5rem;
+    color: var(--white-color); /* Garante que o parágrafo seja branco */
+}
+
+/* Estilos para Botões Padrão */
+.btn {
+    display: inline-block; /* Permite definir largura/altura e aplicar padding/margin */
+    background: var(--primary-color);
+    color: var(--white-color);
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    transition: background 0.3s ease; /* Transição suave ao passar o mouse */
+    border: none; /* Remove borda padrão de botões de formulário */
+    cursor: pointer; /* Indica que é clicável */
+}
+
+.btn:hover {
+    background: var(--secondary-color); /* Muda a cor ao passar o mouse */
+}
+
+/* Estilos para Seções Gerais */
+section {
+    padding: 40px 0; /* Padding superior e inferior para todas as seções */
+    text-align: center;
+}
+
+section:nth-of-type(even) { /* Alterna a cor de fundo para seções pares (2ª, 4ª, etc.) */
+    background-color: var(--white-color); /* Fundo branco para seções alternadas */
+}
+
+section h2 {
+    font-size: 2rem; /* Tamanho dos títulos de seção */
+    margin-bottom: 1.5rem;
+    color: var(--secondary-color);
+}
+
+/* Estilos para o Grid de Soluções */
+.solucoes-grid {
+    display: grid; /* Transforma em um grid layout */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Colunas responsivas */
+    gap: 20px; /* Espaçamento entre os cards do grid */
+    margin-top: 2rem;
+}
+
+.solucao-card {
+    background: var(--white-color);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave para os cards */
+    text-align: left; /* Alinha o texto dentro dos cards à esquerda */
+}
+
+.solucao-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.solucao-card p {
+    margin-bottom: 15px;
+}
+
+/* Estilos para o Formulário de Contato */
+#contato form {
+    max-width: 600px;
+    margin: 2rem auto; /* Centraliza o formulário e adiciona margin superior/inferior */
+    background: var(--white-color);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: left; /* Alinha o texto das labels à esquerda */
+}
+
+.form-group {
+    margin-bottom: 15px; /* Espaçamento entre os grupos de formulário */
+}
+
+.form-group label {
+    display: block; /* Faz a label ocupar a própria linha */
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--dark-color);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group textarea {
+    width: 100%; /* Faz os campos ocuparem 100% da largura disponível */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-family: 'Roboto', sans-serif; /* Garante que a fonte seja a mesma do corpo */
+    font-size: 1rem;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="tel"]:focus,
+.form-group textarea:focus {
+    outline: none; /* Remove o contorno padrão do foco */
+    border-color: var(--primary-color); /* Borda primária ao focar */
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.25); /* Sombra suave ao focar */
+}
+
+/* Estilos do Rodapé (Footer) */
+footer {
+    background: var(--dark-color);
+    color: var(--white-color);
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 0.9rem;
+}
+
+/* === Responsividade === */
+/* Ajustes para telas médias (tablets e smartphones maiores) */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    header nav ul li {
+        display: block; /* Itens do menu em lista vertical */
+        margin: 5px 0;
+    }
+
+    #hero h2 {
+        font-size: 1.8rem; /* Reduz o título do hero em telas menores */
+    }
+
+    #hero p {
+        font-size: 1rem; /* Reduz o parágrafo do hero em telas menores */
+    }
+
+    .solucoes-grid {
+        grid-template-columns: 1fr; /* Transforma o grid em uma única coluna */
+    }
+}
+
+/* Ajustes para telas pequenas (smartphones) */
+@media (max-width: 576px) {
+    #hero h2 {
+        font-size: 1.5rem; /* Reduz ainda mais o título do hero para caber */
+    }
+    #hero p {
+        font-size: 0.9rem; /* Reduz ainda mais o parágrafo do hero */
+    }
+    .hero-content {
+        padding: 20px; /* Reduz o padding interno do box de conteúdo */
+        width: 90%; /* Aumenta a largura para ocupar mais espaço na tela */
+    }
+    .btn {
+        padding: 8px 15px; /* Botão ligeiramente menor */
+        font-size: 0.9rem;
+    }
+    .container {
+        padding: 0 15px; /* Reduz o padding lateral do container em telas muito pequenas */
+    }
+}
